@@ -1,13 +1,21 @@
 import { readFileSync } from "fs";
 
-export const parseInput = (text: string): [number[], number[]] =>
-  text.split("\n").reduce(([a, b], curr) => {
-    const [left, right] = curr.split("   ");
-    return [[...a, parseInt(left)], [...b, parseInt(right)]];
-  }, [[] as number[], [] as number[]]);
+export type Input = {
+  left: number[];
+  right: number[];
+}
 
-export const readInput = (path: string): [number[], number[]] => {
-  console.log(path);
+export const parseInput = (text: string): Input =>
+  text.split("\n").reduce((input, curr) => {
+    const [left, right] = curr.split("   ");
+
+    return {
+      left: [...input.left, parseInt(left)],
+      right: [...input.right, parseInt(right)]
+    };
+  }, { left: [], right: [] } as Input);
+
+export const readInput = (path: string): Input => {
   const textInput = readFileSync(path, 'utf-8');
   return parseInput(textInput);
 }

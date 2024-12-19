@@ -10,10 +10,10 @@ describe(parseInput, () => {
 
     const actual = parseInput(given);
 
-    expect(actual).toEqual([
-      [35039, 61770, 64079],
-      [67568, 80134, 34668]
-    ]);
+    expect(actual).toEqual({
+      left: [35039, 61770, 64079],
+      right: [67568, 80134, 34668]
+    });
   });
 });
 
@@ -21,9 +21,8 @@ describe("readInput", () => {
   it("reads input", () => {
     const actual = readInput(`${__dirname}/input.txt`);
 
-    expect(actual.length).toEqual(2);
-    expect(actual[0].length).toBeGreaterThan(0);
-    expect(actual[1].length).toBeGreaterThan(0);
-    expect(actual[0].length).toEqual(actual[1].length);
+    expect(actual.left.length).toBeGreaterThan(0);
+    expect(actual.right.length).toBeGreaterThan(0);
+    expect(actual.left.length).toEqual(actual.right.length);
   });
 });

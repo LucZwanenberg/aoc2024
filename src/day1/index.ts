@@ -1,7 +1,10 @@
 import { readInput } from "./io";
-import { calculateTotalDistance } from "./lib";
+import { calculateSimilarityScore, calculateTotalDistance } from "./lib";
 
-export const runPartOne = (): number => {
-  const input = readInput(`${__dirname}/input.txt`);
-  return calculateTotalDistance(input);
-};
+const input = readInput(`${__dirname}/input.txt`);
+
+export const runPartOne = (): number =>
+  calculateTotalDistance(input);
+
+export const runPartTwo = (): number =>
+  calculateSimilarityScore(input);
